@@ -7,10 +7,10 @@ from geometry_msgs.msg import Twist
 class MinimalSubscriber(Node):
 
     def __init__(self):
-        super().__init__('minimal_subscriber')
+        super().__init__('nodum')
         self.subscription = self.create_subscription(
             Twist,
-            'topic',
+            'cmd_vel',
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
@@ -18,6 +18,11 @@ class MinimalSubscriber(Node):
     def listener_callback(self, msg):
         self.get_logger().info('I heard: "%s"' % msg.linear.x)
 
+        x=(msg.linear.x)
+        y=(msg.linear.y)
+        z=(msg.angular.z)
+        print(x,y,z)
+        
 
 def main(args=None):
     rclpy.init(args=args)
