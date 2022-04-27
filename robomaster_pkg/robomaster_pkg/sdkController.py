@@ -1,8 +1,15 @@
+import sys
+sys.path.append('/home/kae/Desktop/RoboMaster-SDK/examples/plaintext_sample_code/RoboMasterEP/connection/network/')
 import rclpy
 from rclpy.node import Node
-
 from geometry_msgs.msg import Twist
-
+import robot_connection
+USB_DIRECT_CONNECTION_IP = '192.168.42.2'
+robot = robot_connection.RobotConnection(USB_DIRECT_CONNECTION_IP)
+if not robot.open():
+    print('open fail')
+    exit(1)
+robot.send_data('command')
 
 class MinimalSubscriber(Node):
 
@@ -14,21 +21,16 @@ class MinimalSubscriber(Node):
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
-
     def listener_callback(self, msg):
         self.get_logger().info('I heard: "%s"' % msg.linear.x)
-
         x=(msg.linear.x)
         y=(msg.linear.y)
         z=(msg.angular.z)
-        print(x,y,z)
-        
-
+        robot.send_data(f'chassis speed x {x} y {y} z {z}')
 def main(args=None):
+    
     rclpy.init(args=args)
-
     minimal_subscriber = MinimalSubscriber()
-
     rclpy.spin(minimal_subscriber)
 
     # Destroy the node explicitly
@@ -36,7 +38,7 @@ def main(args=None):
     # when the garbage collector destroys the node object)
     minimal_subscriber.destroy_node()
     rclpy.shutdown()
-
+    
 
 if __name__ == '__main__':
     main()
