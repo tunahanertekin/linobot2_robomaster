@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'sdkController = robomaster_pkg.sdkController:main'
+            'sdkController = robomaster_pkg.sdkController:main','simodom = robomaster_pkg.simodom:main'
         ],
     },
 )
