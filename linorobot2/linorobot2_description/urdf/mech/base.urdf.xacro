@@ -5,7 +5,7 @@
     
     <link name="base_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 3.14"/>
+        <origin xyz="0.02 0 0" rpy="0 0 3.14"/>
         <geometry>
           <mesh scale="0.002 0.002 0.002" filename="file:///home/samet/Desktop/isaac-gym/base_link_centered.stl"/>
           <!-- <mesh ="" scale="0.001 0.001 0.001"/> -->
