@@ -1,4 +1,3 @@
-import msilib
 import sys
 sys.path.append('/home/kae/Desktop/RoboMaster-SDK/examples/plaintext_sample_code/RoboMasterEP/connection/network/')
 import rclpy
