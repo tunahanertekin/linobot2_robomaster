@@ -27,7 +27,10 @@ class MinimalSubscriber(Node):
         y=(msg.linear.y)
         z=(msg.angular.z)
         z=z*-30
-        robot.send_data(f'chassis speed x {x} y {y} z {z}')
+        if(x==0 and y==0 and z==0):
+            robot.send_data(f'chassis stop')
+        else:
+            robot.send_data(f'chassis speed x {x} y {y} z {z}')
 def main(args=None):
     
     rclpy.init(args=args)
