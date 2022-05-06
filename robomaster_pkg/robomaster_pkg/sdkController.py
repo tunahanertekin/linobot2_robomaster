@@ -27,7 +27,7 @@ class MinimalSubscriber(Node):
         y=(msg.linear.y)
         z=(msg.angular.z)
         z=z*-30
-        if(x==0 and y==0 and z==0):
+        if(x==0 and y==0 and z<=0.01):
             robot.send_data(f'chassis stop')
         else:
             robot.send_data(f'chassis speed x {x} y {y} z {z}')
