@@ -25,8 +25,9 @@ from launch_ros.actions import Node
 def generate_launch_description():
     laser_sensor_name = os.getenv('LINOROBOT2_LASER_SENSOR', '')
     base_laser_sensor_name = os.getenv('LINOROBOT2_BASE_LASER_SENSOR', '')
-    depth_sensor_name = os.getenv('LINOROBOT2_DEPTH_SENSOR', '')
-    
+    #depth_sensor_name = os.getenv('LINOROBOT2_DEPTH_SENSOR', '')
+    depth_sensor_name = "realsense"
+
     fake_laser_config_path = PathJoinSubstitution(
         [FindPackageShare('linorobot2_bringup'), 'config', 'fake_laser.yaml']
     )
@@ -71,7 +72,7 @@ def generate_launch_description():
 
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(depth_launch_path),
-            condition=IfCondition(PythonExpression(['"" != "', depth_sensor_name, '"'])),
+            #condition=IfCondition(PythonExpression(['"" != "', depth_sensor_name, '"'])),
             launch_arguments={'sensor': depth_sensor_name}.items()   
         ),
 
