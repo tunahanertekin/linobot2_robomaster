@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/ws/sdk/RoboMaster-SDK/examples/plaintext_sample_code/RoboMasterEP/connection/network/')
+sys.path.append('/home/ws/sdk/src/RoboMaster-SDK/examples/plaintext_sample_code/RoboMasterEP/connection/network/')
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
